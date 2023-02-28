@@ -37,6 +37,11 @@ public class PlayerController {
         return "players/bracket";
     }
 
+    @GetMapping("/scores")
+    public String scores() {
+        return "players/scores";
+    }
+
 
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model theModel) {

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hockey Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" th:href="@{/scores.css}" />
+    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow”
+          integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
+</head>
+<body>
+<nav id="nav">
+    <ul class="container">
+        <li><a th:href="@{/players/home}">Home</a></li>
+        <li><a th:href="@{/players/bracket}">Bracket</a></li>
+        <li><a href="scores.html">Scores</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="signup.html">Sign Up</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="list-players.html">Player List</a></li>
+    </ul>
+</nav>
+
+<div class="header">
+    <span>Western Conference Round 1</span>
+</div>
+<button class="collapsible">1 Colorado Avalanche vs 16 Arizona Coyotes</button>
+<div class="content">
+    <p>
+        Colorado Avalanche 4, Arizona Coyotes 1 (Colorado Leads 1-0)<br>
+        Colorado Avalanche 4, Arizona Coyotes 3 OT (Colorado Leads 2-0)<br>
+        Colorado Avalanche 3, Arizona Coyotes 2 2OT (Colorado Leads 3-0)<br>
+        Colorado Avalanche 5, Arizona Coyotes 2 (Colorado Wins 4-0)
+    </p>
+</div>
+<button class="collapsible">8 Nashville Predators vs 9 Vegas Golden
+    Knights</button>
+<div class="content">
+    <p>
+        Vegas Golden Knights 2, Nashville Predators 1 OT (Vegas Leads 1-0)<br>
+        Vegas Golden Knights 5, Nashville Predators 0 (Vegas Leads 2-0)<br>
+        Nashville Predators 1, Vegas Golden Knights 0 (Vegas Leads 2-1)<br>
+        Vegas Golden Knights 7, Nashville Predators 6 OT (Vegas Leads 3-1)<br>
+        Nashville Predators 6, Vegas Golden Knights 1 (Vegas Leads 3-2)<br>
+        Nashville Predators 3, Vegas Golden Knights 2 (Series Tied 3-3)<br>
+        Nashville Predators 5, Vegas Golden Knights 0 (Nashville wins 4-3)
+    </p>
+</div>
+<button class="collapsible">5 Edmonton Oilers vs 12 San Jose Sharks</button>
+<div class="content">
+    <p> San Jose Sharks 5, Edmonton Oilers 4 OT (San Jose leads 1-0) <br>
+        Edmonton Oilers 2, San Jose Sharks 0 (Series tied 1-1) <br>
+        Edmonton Oilers 3, San Jose Sharks 0 (Edmonton leads 2-1) <br>
+        Edmonton Oilers 4, San Jose Sharks 2 (Edmonton leads 3-1) <br>
+        Edmonton Oilers 10, San Jose Sharks 7 (Edmonton wins 4-1)
+    </p>
+</div>
+<button class="collapsible">4 St. Louis Blues vs 13 Anaheim Ducks</button>
+<div class="content">
+    <p> Anaheim Ducks 3, St. Louis Blues 2 (Anaheim leads 1-0) <br>
+        St. Louis Blues 4, Anaheim Ducks 3 (Series tied 1-1)<br>
+        Anaheim Ducks 3, St. Louis Blues 2 (Anaheim leads 2-1)<br>
+        St. Louis Blues 3, Anaheim Ducks 2 (Series tied 2-2)<br>
+        St. Louis Blues 8, Anaheim Ducks 1 (St. Louis leads 3-2)<br>
+        St. Louis Blues 5, Anaheim Ducks 1 (St. Louis wins 4-2)
+    </p>
+</div>
+<button class="collapsible">6 Los Angeles Kings vs 11 Winnipeg Jets</button>
+<div class="content">
+    <p> Los Angeles Kings 2, Winnipeg Jets 1 (Los Angeles leads 1-0)<br>
+        Los Angeles Kings 7, Winnipeg Jets 0 (Los Angeles leads 2-0)<br>
+        Winnipeg Jets 4, Los Angeles Kings 3 OT (Los Angeles leads 2-1)<br>
+        Los Angeles Kings 2, Winnipeg Jets 1 (Los Angeles leads 3-1)<br>
+        Winnipeg Jets 4, Los Angeles Kings 3 OT (Los Angeles leads 3-2)<br>
+        Los Angeles Kings 5, Winnipeg Jets 2 (Los Angeles wins 4-2)
+    </p>
+</div>
+<button class="collapsible">3 Calgary Flames vs 14 Chicago Blackhawks</button>
+<div class="content">
+    <p> Calgary Flames 2, Chicago Blackhawks 0 (Calgary leads 1-0)<br>
+        Calgary Flames 4, Chicago Blackhawks 2 (Calgary leads 2-0)<br>
+        Calgary Flames 5, Chicago Blackhawks 1 (Calgary leads 3-0)<br>
+        Calgary Flames 9, Chicago Blackhawks 1 (Calgary wins 4-0)
+    </p>
+</div>
+<button class="collapsible">7 Dallas Stars vs 10 Vancouver Canucks</button>
+<div class="content">
+    <p> Vancouver Canucks 2, Dallas Stars 1 (Vancouver leads 1-0)<br>
+        Vancouver Canucks 4, Dallas Stars 2 (Vancouver leads 2-0)<br>
+        Vancouver Canucks 6, Dallas Stars 1 (Vancouver leads 3-0)<br>
+        Dallas Stars 2, Vancouver Canucks 0 (Vancouver leads 3-1)<br>
+        Dallas Stars 4, Vancouver Canucks 3 OT (Vancouver leads 3-2)<br>
+        Dallas Stars 4, Vancouver Canucks 2 (Series tied 3-3)<br>
+        Dallas Stars 5, Vancouver Canucks 4 OT (Dallas wins 4-3)
+    </p>
+</div>
+<button class="collapsible">2 Minnesota Wild vs 15 Seattle Kraken</button>
+<div class="content">
+    <p> Seattle Kraken 4, Minnesota Wild 3 (Seattle leads 1-0)<br>
+        Seattle Kraken 7, Minnesota Wild 2 (Seattle leads 2-0)<br>
+        Minnesota Wild 8, Seattle Kraken 3 (Seattle leads 2-1)<br>
+        Minnesota Wild 2, Seattle Kraken 0 (Series tied 2-2)<br>
+        Minnesota Wild 4, Seattle Kraken 2 (Minnesota leads 3-2)<br>
+        Seattle Kraken 4, Minnesota Wild 3 (Series tied 3-3)<br>
+        Seattle Kraken 3, Minnesota Wild 0 (Seattle wins 4-3)
+    </p>
+</div>
+
+
+
+<script type="text/javascript" th:src="@{/scores.js}"></script>
+</body>
+</html>
