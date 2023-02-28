@@ -10,7 +10,7 @@
     <h3>Player Directory</h3>
     <hr>
 
-    <a th:href="@{/players/playerForm}"
+    <a th:href="@{/players/showFormForAdd}"
             class="btn btn-primary btn-sm mb-3">
         Add Player
     </a>
@@ -45,7 +45,7 @@
             </tr>
         </tbody>
     </table>
-    <a th:href="@{/players/test}">Check the test</a>
+    <a th:href="@{/players/home}">Check the home</a>
     <select>
         <option value="0">Select Player</option>
         <option th:each="tempPlayer : ${players}"

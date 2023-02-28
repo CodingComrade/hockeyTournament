@@ -27,6 +27,16 @@ public class PlayerController {
         return "players/list-players";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "players/home";
+    }
+
+    @GetMapping("/bracket")
+    public String bracket() {
+        return "players/bracket";
+    }
+
 
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model theModel) {
