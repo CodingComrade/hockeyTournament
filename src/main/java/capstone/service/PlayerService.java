@@ -9,8 +9,11 @@ import capstone.entity.Stats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @ComponentScan("capstone")
@@ -24,13 +27,24 @@ public class PlayerService {
     }
 
     public Player getPlayerById(Integer id) {
-        return playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
+        Optional<Player> player = playerRepository.findById(id);
+
+        Player thePlayer = null;
+
+        if (player.isPresent()) {
+            thePlayer = player.get();
+        }
+        else {
+            // we didn't find the employee
+            throw new RuntimeException("Did not find employee id - " + id);
+        }
+        return thePlayer;
+        //return playerRepository.findById(id).orElseThrow(() -> new
+        // ResourceNotFoundException("Player not found with id " + id));
     }
 
     public Player createPlayer(Player player) {
-//        Stats stats = player.getStats();
-//        stats.setPlayer(player);
-//        player.setStats(stats);
+
         return playerRepository.save(player);
     }
 
@@ -41,9 +55,11 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+
+
+
     public void deletePlayer(Integer id) {
-        Player player =
-                playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
+        Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
         playerRepository.delete(player);
     }
 

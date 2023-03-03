@@ -8,6 +8,7 @@ import capstone.entity.Stats;
 import capstone.service.PlayerService;
 import capstone.service.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,27 +57,45 @@ public class PlayerController {
 
 
 
-//    @GetMapping("/showFormForAdd")
-//    public String showFormForAdd(Model theModel) {
-//        Player thePlayer = new Player();
-//
-//        theModel.addAttribute("player", thePlayer);
-//
-//
-//        return "players/playerForm";
-//    }
+    @GetMapping("/showFormForAdd")
+    public String showFormForAdd(@ModelAttribute("playerStatsDTO") PlayerStatsDTO playerStatsDTO, Model theModel) {
+        Player thePlayer = new Player();
+        Stats stats = new Stats();
 
-    @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("playerId") int theId,
-                                    Model theModel){
+        theModel.addAttribute("thePlayer", thePlayer);
+        theModel.addAttribute("stats", stats);
 
-        Player thePlayer = playerService.getPlayerById(theId);
-
-
-        theModel.addAttribute("player", thePlayer);
 
         return "players/playerForm";
     }
+
+//    @PostMapping("/showFormForUpdate")
+//    public String showFormForUpdate(@RequestParam("playerId") int theId, Model theModel,
+//                                    Player player, Stats stats){
+//
+//        playerService.updatePlayer(theId, player);
+//        statsService.updateStats(theId, stats);
+//
+//        return "players/playerForm";
+//
+//    }
+
+//    @GetMapping("/showFormForUpdate")
+//    public String showFormForUpdate(@RequestParam("playerId") int theId,
+//                                    Model theModel) {
+//
+//        // get the employee from the service
+//        Player player = playerService.getPlayerById(theId);
+//
+//        // set employee as a model attribute to pre-populate the form
+//        theModel.addAttribute("player", player);
+//
+//        // send over to our form
+//        return "players/playerForm";
+//    }
+
+
+
 
     @GetMapping("/delete")
     public String delete(@RequestParam("playerId") int theId) {
@@ -118,20 +137,16 @@ public class PlayerController {
 //        return "redirect:/players";
 //    }
 
-    @PostMapping("/showFormForAdd")
-    public ResponseEntity<?> savePlayer(@RequestBody PlayerStatsDTO
+    @PostMapping("/save") //changed showFormForAdd to save
+    public String savePlayer(@ModelAttribute("playerStatsDTO") PlayerStatsDTO
     playerStatsDTO, Model theModel) {
-
-//        if (playerStatsDTO.getStats() != null && playerDTO.getStats().getGamesPlayed() == null) {
-//            playerDTO.getStats().setGamesPlayed(0);
-//        }
 
         Player player = new Player();
         player.setName(playerStatsDTO.getName());
         player.setTeam(playerStatsDTO.getTeam());
 
 
-
+        //refactor model mapper
         Stats stats = new Stats();
         stats.setGamesPlayed(playerStatsDTO.getGamesPlayed() == null ? 0 : playerStatsDTO.getGamesPlayed());
         stats.setGoals(playerStatsDTO.getGoals() == null ? 0 : playerStatsDTO.getGoals());
@@ -149,13 +164,12 @@ public class PlayerController {
         stats.setShotsAgainst(playerStatsDTO.getShotsAgainst() == null ? 0 : playerStatsDTO.getShotsAgainst());
         stats.setGoalsAgainst(playerStatsDTO.getGoalsAgainst() == null ? 0 : playerStatsDTO.getGoalsAgainst());
 
-        System.out.println(player);
-        System.out.println(stats);
         playerService.createPlayer(player);
         statsService.createStats(stats);
         theModel.addAttribute("player", player);
         theModel.addAttribute("stats", stats);
-        return ResponseEntity.ok().build();
+        //return ResponseEntity.ok().build();
+        return "redirect:/players/list";
 
     }
 

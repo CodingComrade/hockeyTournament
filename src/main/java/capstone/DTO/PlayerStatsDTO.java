@@ -1,6 +1,10 @@
 package capstone.DTO;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class PlayerStatsDTO {
+    private int Id;
     private String name;
 
     private String team;
@@ -34,6 +38,8 @@ public class PlayerStatsDTO {
     private Integer shotsAgainst;
 
     private Integer goalsAgainst;
+
+
 
 
     public PlayerStatsDTO(String name, String team, Integer gamesPlayed,
@@ -195,5 +201,13 @@ public class PlayerStatsDTO {
 
     public void setGoalsAgainst(Integer goalsAgainst) {
         this.goalsAgainst = goalsAgainst;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
     }
 }
