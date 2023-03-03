@@ -12,15 +12,79 @@
 
         <p class="h4 mb-4">Save Player</p>
 
-        <form action="#" th:action="@{/players/save}"
-                         th:object="${player}" method="POST">
+        <form th:action="@{/players/save}"
+                         th:object="${playerDTO}" method="post">
 
-            <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{name}"
-                   class="form-control mb-4 col-4" placeholder="Name">
+            <input type="hidden" th:field="*{player.id}">
 
-            <input type="text" th:field="*{team}"
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{player.name}" id="name"
+                   class="form-control mb-4 col-4">
+
+            <label for="team">Team:</label>
+            <input type="text" th:field="*{player.team}" id="team"
                    class="form-control mb-4 col-4" placeholder="Team">
+
+            <label for="gamesPlayed">Games Played:</label>
+                <input type="number" th:field="*{statsDTO.gamesPlayed}"
+                       id="gamesPlayed"
+                       class="form-control mb-4 col-4">
+
+            <label for="goals">Goals:</label>
+                <input type="number" th:field="*{statsDTO.goals}" id="goals"
+                       class="form-control mb-4 col-4">
+
+            <label for="assists">Assists:</label>
+                <input type="number" th:field="*{statsDTO.assists}" id="assists"
+                       class="form-control mb-4 col-4">
+
+            <label for="points">Points:</label>
+                <input type="number" th:field="*{statsDTO.points}" id="points"
+                       class="form-control mb-4 col-4">
+
+            <label for="plusMinus">Plus/Minus:</label>
+                <input type="number" th:field="*{statsDTO.plusMinus}"
+                       id="plusMinus"
+                       class="form-control mb-4 col-4">
+
+            <label for="shots">Shots:</label>
+                <input type="number" th:field="*{statsDTO.shots}" id="shots"
+                       class="form-control mb-4 col-4">
+
+            <label for="wins">Wins:</label>
+                <input type="number" th:field="*{statsDTO.wins}" id="wins"
+                       class="form-control mb-4 col-4">
+
+            <label for="losses">Losses:</label>
+                <input type="number" th:field="*{statsDTO.losses}" id="losses"
+                       class="form-control mb-4 col-4">
+
+            <label for="OTL">Overtime Losses:</label>
+                <input type="number" th:field="*{statsDTO.OTL}" id="OTL"
+                       class="form-control mb-4 col-4">
+
+            <label for="SavePercent">Team:</label>
+                <input type="number" th:field="*{statsDTO.SVPercent}"
+                       id="SavePercent"
+                       class="form-control mb-4 col-4">
+
+            <label for="GAA">GAA:</label>
+                <input type="number" th:field="*{statsDTO.GAA}" id="GAA"
+                       class="form-control mb-4 col-4">
+
+            <label for="saves">Saves:</label>
+                <input type="number" th:field="*{statsDTO.saves}" id="saves"
+                       class="form-control mb-4 col-4">
+
+            <label for="ShotsAgainst">Team:</label>
+                <input type="number" th:field="*{statsDTO.shotsAgainst}"
+                       id="ShotsAgainst"
+                       class="form-control mb-4 col-4">
+
+            <label for="GoalsAgainst">Team:</label>
+                <input type="number" th:field="*{statsDTO.goalsAgainst}"
+                       id="GoalsAgainst"
+                       class="form-control mb-4 col-4">
 
             <button type="submit" class="btn btn-info col-2">Save</button>
         </form>

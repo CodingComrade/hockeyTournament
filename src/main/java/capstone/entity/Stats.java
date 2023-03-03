@@ -10,10 +10,10 @@ public class Stats {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id")
+    @JoinColumn(name="player_id")
     private Player player;
 
     @Column(name="games_played")
@@ -47,10 +47,10 @@ public class Stats {
     private int SO;
 
     @Column(name="save_percentage")
-    private float SVPercent;
+    private Double SVPercent;
 
     @Column(name="goals_against_average")
-    private float GAA;
+    private Double GAA;
 
     @Column(name="saves")
     private int saves;
@@ -67,7 +67,7 @@ public class Stats {
 
     public Stats(int gamesPlayed, int goals, int assists, int points,
                  int plusMinus, int shots, int wins, int losses, int OTL,
-                 int SO, float SVPercent, float GAA, int saves,
+                 int SO, Double SVPercent, Double GAA, int saves,
                  int shotsAgainst, int goalsAgainst) {
         this.gamesPlayed = gamesPlayed;
         this.goals = goals;
@@ -100,6 +100,7 @@ public class Stats {
 
     public void setPlayer(Player player) {
         this.player = player;
+        player.setStats(this);
     }
 
     public int getGamesPlayed() {
@@ -174,27 +175,27 @@ public class Stats {
         this.OTL = OTL;
     }
 
-    public int getSO() {
+    public int getShutouts() {
         return SO;
     }
 
-    public void setSO(int SO) {
+    public void setShutouts(int SO) {
         this.SO = SO;
     }
 
-    public float getSVPercent() {
+    public Double getSVPercent() {
         return SVPercent;
     }
 
-    public void setSVPercent(float SVPercent) {
+    public void setSVPercent(Double SVPercent) {
         this.SVPercent = SVPercent;
     }
 
-    public float getGAA() {
+    public Double getGAA() {
         return GAA;
     }
 
-    public void setGAA(float GAA) {
+    public void setGAA(Double GAA) {
         this.GAA = GAA;
     }
 

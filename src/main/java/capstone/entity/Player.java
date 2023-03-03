@@ -9,7 +9,7 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    private Integer id;
 
     @Column(name="name")
     private String name;
@@ -17,19 +17,27 @@ public class Player {
     @Column(name="team")
     private String team;
 
-    public Player() {
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL)
+    private Stats stats;
 
-    }
 
     public Player(String name) {
         this.name = name;
     }
 
-    public int getId() {
+    public Player() {
+
+    }
+
+    public Player(String name, String team) {
+    }
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,6 +55,14 @@ public class Player {
 
     public void setTeam(String team) {
         this.team = team;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
     }
 
     @Override
