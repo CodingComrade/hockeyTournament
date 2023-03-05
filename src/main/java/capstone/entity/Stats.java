@@ -1,248 +1,69 @@
 package capstone.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="stats")
+@Table(name = "stats")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Stats {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer id;
+    @Column(name = "id")
+    private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="player_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id", referencedColumnName = "id")
     private Player player;
 
-    @Column(name="games_played")
-    private int gamesPlayed;
+    @Column(name = "games_played")
+    private Integer gamesPlayed;
 
-    @Column(name="goals")
-    private int goals;
+    @Column(name = "goals")
+    private Integer goals;
 
-    @Column(name="assists")
-    private int assists;
+    @Column(name = "assists")
+    private Integer assists;
 
-    @Column(name="points")
-    private int points;
+    @Column(name = "points")
+    private Integer points;
 
-    @Column(name="plus_minus")
-    private int plusMinus;
+    @Column(name = "plus_minus")
+    private Integer plusMinus;
 
-    @Column(name="shots")
-    private int shots;
+    @Column(name = "shots")
+    private Integer shots;
 
-    @Column(name="wins")
-    private int wins;
+    @Column(name = "wins")
+    private Integer wins;
 
-    @Column(name="losses")
-    private int losses;
+    @Column(name = "losses")
+    private Integer losses;
 
-    @Column(name="overtime_losses")
-    private int OTL;
+    @Column(name = "overtime_losses")
+    private Integer overtimeLosses;
 
-    @Column(name="shutouts")
-    private int SO;
+    @Column(name = "shutouts")
+    private Integer shutouts;
 
-    @Column(name="save_percentage")
-    private Double SVPercent;
+    @Column(name = "save_percentage")
+    private Double savePercentage;
 
-    @Column(name="goals_against_average")
-    private Double GAA;
+    @Column(name = "goals_against_average")
+    private Double goalsAgainstAverage;
 
-    @Column(name="saves")
-    private int saves;
+    @Column(name = "saves")
+    private Integer saves;
 
-    @Column(name="shots_against")
-    private int shotsAgainst;
+    @Column(name = "shots_against")
+    private Integer shotsAgainst;
 
-    @Column(name="goals_against")
-    private int goalsAgainst;
+    @Column(name = "goals_against")
+    private Integer goalsAgainst;
 
-    public Stats () {
-
-    }
-
-    public Stats(int gamesPlayed, int goals, int assists, int points,
-                 int plusMinus, int shots, int wins, int losses, int OTL,
-                 int SO, Double SVPercent, Double GAA, int saves,
-                 int shotsAgainst, int goalsAgainst) {
-        this.gamesPlayed = gamesPlayed;
-        this.goals = goals;
-        this.assists = assists;
-        this.points = points;
-        this.plusMinus = plusMinus;
-        this.shots = shots;
-        this.wins = wins;
-        this.losses = losses;
-        this.OTL = OTL;
-        this.SO = SO;
-        this.SVPercent = SVPercent;
-        this.GAA = GAA;
-        this.saves = saves;
-        this.shotsAgainst = shotsAgainst;
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-        player.setStats(this);
-    }
-
-    public int getGamesPlayed() {
-        return gamesPlayed;
-    }
-
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
-
-    public int getGoals() {
-        return goals;
-    }
-
-    public void setGoals(int goals) {
-        this.goals = goals;
-    }
-
-    public int getAssists() {
-        return assists;
-    }
-
-    public void setAssists(int assists) {
-        this.assists = assists;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public int getPlusMinus() {
-        return plusMinus;
-    }
-
-    public void setPlusMinus(int plusMinus) {
-        this.plusMinus = plusMinus;
-    }
-
-    public int getShots() {
-        return shots;
-    }
-
-    public void setShots(int shots) {
-        this.shots = shots;
-    }
-
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    public int getLosses() {
-        return losses;
-    }
-
-    public void setLosses(int losses) {
-        this.losses = losses;
-    }
-
-    public int getOTL() {
-        return OTL;
-    }
-
-    public void setOTL(int OTL) {
-        this.OTL = OTL;
-    }
-
-    public int getShutouts() {
-        return SO;
-    }
-
-    public void setShutouts(int SO) {
-        this.SO = SO;
-    }
-
-    public Double getSVPercent() {
-        return SVPercent;
-    }
-
-    public void setSVPercent(Double SVPercent) {
-        this.SVPercent = SVPercent;
-    }
-
-    public Double getGAA() {
-        return GAA;
-    }
-
-    public void setGAA(Double GAA) {
-        this.GAA = GAA;
-    }
-
-    public int getSaves() {
-        return saves;
-    }
-
-    public void setSaves(int saves) {
-        this.saves = saves;
-    }
-
-    public int getShotsAgainst() {
-        return shotsAgainst;
-    }
-
-    public void setShotsAgainst(int shotsAgainst) {
-        this.shotsAgainst = shotsAgainst;
-    }
-
-    public int getGoalsAgainst() {
-        return goalsAgainst;
-    }
-
-    public void setGoalsAgainst(int goalsAgainst) {
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    @Override
-    public String toString() {
-        return "Stats{" +
-                "id=" + id +
-                ", player=" + player +
-                ", gamesPlayed=" + gamesPlayed +
-                ", goals=" + goals +
-                ", assists=" + assists +
-                ", points=" + points +
-                ", plusMinus=" + plusMinus +
-                ", shots=" + shots +
-                ", wins=" + wins +
-                ", losses=" + losses +
-                ", OTL=" + OTL +
-                ", SO=" + SO +
-                ", SVPercent=" + SVPercent +
-                ", GAA=" + GAA +
-                ", saves=" + saves +
-                ", shotsAgainst=" + shotsAgainst +
-                ", goalsAgainst=" + goalsAgainst +
-                '}';
-    }
 }

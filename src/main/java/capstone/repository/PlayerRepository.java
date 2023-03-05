@@ -4,10 +4,12 @@ import capstone.entity.Player;
 import capstone.entity.Stats;
 import capstone.service.PlayerService;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface PlayerRepository extends JpaRepository<Player, Integer> {
-    Optional<Player> findByStats(Stats stats);
+@Repository
+public interface PlayerRepository extends JpaRepository<Player, Long> {
+    Optional<Player> findById(Long id);
 
 }

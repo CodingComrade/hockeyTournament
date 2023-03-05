@@ -24,6 +24,7 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
+
     @Autowired
     private StatsService statsService;
 
@@ -69,77 +70,53 @@ public class PlayerController {
         return "players/playerForm";
     }
 
-//    @PostMapping("/showFormForUpdate")
-//    public String showFormForUpdate(@RequestParam("playerId") int theId, Model theModel,
-//                                    Player player, Stats stats){
-//
-//        playerService.updatePlayer(theId, player);
-//        statsService.updateStats(theId, stats);
-//
-//        return "players/playerForm";
-//
-//    }
+    @PostMapping("/showFormForUpdate")
+    public String update(@ModelAttribute PlayerStatsDTO dto) {
+        Player player = playerService.findById(dto.getPlayerId());
+        player.setName(dto.getName());
+        player.setTeam(dto.getTeam());
 
-//    @GetMapping("/showFormForUpdate")
-//    public String showFormForUpdate(@RequestParam("playerId") int theId,
-//                                    Model theModel) {
-//
-//        // get the employee from the service
-//        Player player = playerService.getPlayerById(theId);
-//
-//        // set employee as a model attribute to pre-populate the form
-//        theModel.addAttribute("player", player);
-//
-//        // send over to our form
-//        return "players/playerForm";
-//    }
-
+        Stats stats = new Stats();
+        stats.setPlayer(player);
+        stats.setGamesPlayed(dto.getGamesPlayed() == null ? 0 : dto.getGamesPlayed());
+        stats.setGoals(dto.getGoals() == null ? 0 : dto.getGoals());
+        stats.setAssists(dto.getAssists() == null ? 0 : dto.getAssists());
+        stats.setPoints(dto.getPoints() == null ? 0 : dto.getPoints());
+        stats.setPlusMinus(dto.getPlusMinus() == null ? 0 : dto.getPlusMinus());
+        stats.setShots(dto.getShots() == null ? 0 : dto.getShots());
+        stats.setWins(dto.getWins() == null ? 0 : dto.getWins());
+        stats.setLosses(dto.getLosses() == null ? 0 : dto.getLosses());
+        stats.setOvertimeLosses(dto.getOvertimeLosses() == null ? 0 : dto.getOvertimeLosses());
+        stats.setShutouts(dto.getShutouts() == null ? 0 : dto.getShutouts());
+        stats.setSavePercentage(dto.getSavePercentage() == null ? 0.0 : dto.getSavePercentage());
+        stats.setGoalsAgainstAverage(dto.getGoalsAgainstAverage() == null ? 0.0 : dto.getGoalsAgainstAverage());
+        stats.setSaves(dto.getSaves() == null ? 0 : dto.getSaves());
+        stats.setShotsAgainst(dto.getShotsAgainst() == null ? 0 : dto.getShotsAgainst());
+        stats.setGoalsAgainst(dto.getGoalsAgainst() == null ? 0 : dto.getGoalsAgainst());
 
 
+        playerService.updatePlayer(player);
 
-    @GetMapping("/delete")
-    public String delete(@RequestParam("playerId") int theId) {
-        playerService.deletePlayer(theId);
+        //playerService.updatePlayer(player.getId(), player);
+
+
+        return "players/playerForm";
+    }
+
+
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        Player player = playerService.findById(id);
+        playerService.deletePlayer(player.getId());
+
 
         return "redirect:/players/list";
     }
 
-//    @PostMapping("/save")
-//    public String createPlayer(@ModelAttribute("playerForm")PlayerStatsDTO playerStatsDTO) {
-//        Player player = new Player(playerStatsDTO.getName(), playerStatsDTO.getTeam());
-//        player.setName(playerStatsDTO.getName());
-//        player.setTeam(playerStatsDTO.getTeam());
-//
-//
-//        Stats stats = new Stats();
-//
-//
-//        stats.setGamesPlayed(playerStatsDTO.getGamesPlayed() == null ? 0 : playerStatsDTO.getGamesPlayed());
-//        stats.setGoals(playerStatsDTO.getGoals() == null ? 0 : playerStatsDTO.getGoals());
-//        stats.setAssists(playerStatsDTO.getAssists() == null ? 0 : playerStatsDTO.getAssists());
-//        stats.setPoints(playerStatsDTO.getPoints() == null ? 0 : playerStatsDTO.getPoints());
-//        stats.setPlusMinus(playerStatsDTO.getPlusMinus() == null ? 0 : playerStatsDTO.getPlusMinus());
-//        stats.setShots(playerStatsDTO.getShots() == null ? 0 : playerStatsDTO.getShots());
-//        stats.setWins(playerStatsDTO.getWins() == null ? 0 : playerStatsDTO.getWins());
-//        stats.setLosses(playerStatsDTO.getLosses() == null ? 0 : playerStatsDTO.getLosses());
-//        stats.setOTL(playerStatsDTO.getOTL() == null ? 0 : playerStatsDTO.getOTL());
-//        stats.setShutouts(playerStatsDTO.getShutouts() == null ? 0 : playerStatsDTO.getShutouts());
-//        stats.setSVPercent(playerStatsDTO.getSVPercent() == null ? 0.0 : playerStatsDTO.getSVPercent());
-//        stats.setShutouts(playerStatsDTO.getShutouts() == null ? 0 : playerStatsDTO.getShutouts());
-//        stats.setSaves(playerStatsDTO.getSaves() == null ? 0 : playerStatsDTO.getSaves());
-//        stats.setShotsAgainst(playerStatsDTO.getShotsAgainst() == null ? 0 : playerStatsDTO.getShotsAgainst());
-//        stats.setGoalsAgainst(playerStatsDTO.getGoalsAgainst() == null ? 0 : playerStatsDTO.getGoalsAgainst());
-//
-//        player.setStats(stats);
-//        stats.setPlayer(player);
-//
-//        playerService.createPlayer(player);
-//        return "redirect:/players";
-//    }
-
     @PostMapping("/save") //changed showFormForAdd to save
     public String savePlayer(@ModelAttribute("playerStatsDTO") PlayerStatsDTO
-    playerStatsDTO, Model theModel) {
+                                     playerStatsDTO, Model theModel) {
 
         Player player = new Player();
         player.setName(playerStatsDTO.getName());
@@ -148,6 +125,7 @@ public class PlayerController {
 
         //refactor model mapper
         Stats stats = new Stats();
+        stats.setPlayer(player);
         stats.setGamesPlayed(playerStatsDTO.getGamesPlayed() == null ? 0 : playerStatsDTO.getGamesPlayed());
         stats.setGoals(playerStatsDTO.getGoals() == null ? 0 : playerStatsDTO.getGoals());
         stats.setAssists(playerStatsDTO.getAssists() == null ? 0 : playerStatsDTO.getAssists());
@@ -156,13 +134,14 @@ public class PlayerController {
         stats.setShots(playerStatsDTO.getShots() == null ? 0 : playerStatsDTO.getShots());
         stats.setWins(playerStatsDTO.getWins() == null ? 0 : playerStatsDTO.getWins());
         stats.setLosses(playerStatsDTO.getLosses() == null ? 0 : playerStatsDTO.getLosses());
-        stats.setOTL(playerStatsDTO.getOTL() == null ? 0 : playerStatsDTO.getOTL());
+        stats.setOvertimeLosses(playerStatsDTO.getOvertimeLosses() == null ? 0 : playerStatsDTO.getOvertimeLosses());
         stats.setShutouts(playerStatsDTO.getShutouts() == null ? 0 : playerStatsDTO.getShutouts());
-        stats.setSVPercent(playerStatsDTO.getSVPercent() == null ? 0.0 : playerStatsDTO.getSVPercent());
-        stats.setGAA(playerStatsDTO.getGAA() == null ? 0.0 : playerStatsDTO.getGAA());
+        stats.setSavePercentage(playerStatsDTO.getSavePercentage() == null ? 0.0 : playerStatsDTO.getSavePercentage());
+        stats.setGoalsAgainstAverage(playerStatsDTO.getGoalsAgainstAverage() == null ? 0.0 : playerStatsDTO.getGoalsAgainstAverage());
         stats.setSaves(playerStatsDTO.getSaves() == null ? 0 : playerStatsDTO.getSaves());
         stats.setShotsAgainst(playerStatsDTO.getShotsAgainst() == null ? 0 : playerStatsDTO.getShotsAgainst());
         stats.setGoalsAgainst(playerStatsDTO.getGoalsAgainst() == null ? 0 : playerStatsDTO.getGoalsAgainst());
+
 
         playerService.createPlayer(player);
         statsService.createStats(stats);

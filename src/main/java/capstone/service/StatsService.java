@@ -17,7 +17,7 @@ public class StatsService {
         return statsRepository.findAll();
     }
 
-    public Stats getStatsById(Integer id) {
+    public Stats getStatsById(Long id) {
         return statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
     }
 
@@ -25,7 +25,7 @@ public class StatsService {
         return statsRepository.save(stats);
     }
 
-    public Stats updateStats(Integer id, Stats statsDetails) {
+    public Stats updateStats(Long id, Stats statsDetails) {
         Stats stats =
                 statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
         stats.setGamesPlayed(statsDetails.getGamesPlayed());
@@ -36,17 +36,17 @@ public class StatsService {
         stats.setShots(statsDetails.getShots());
         stats.setWins(statsDetails.getWins());
         stats.setLosses(statsDetails.getLosses());
-        stats.setOTL(statsDetails.getOTL());
+        stats.setOvertimeLosses(statsDetails.getOvertimeLosses());
         stats.setShutouts(statsDetails.getShutouts());
-        stats.setSVPercent(statsDetails.getSVPercent());
-        stats.setGAA(statsDetails.getGAA());
+        stats.setSavePercentage(statsDetails.getSavePercentage());
+        stats.setGoalsAgainstAverage(statsDetails.getGoalsAgainstAverage());
         stats.setSaves(statsDetails.getSaves());
         stats.setShotsAgainst(statsDetails.getShotsAgainst());
         stats.setGoalsAgainst(statsDetails.getGoalsAgainst());
         return statsRepository.save(stats);
     }
 
-    public void deleteStats(Integer id) {
+    public void deleteStats(Long id) {
         Stats stats = statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
         statsRepository.delete(stats);
     }

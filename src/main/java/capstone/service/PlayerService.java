@@ -26,21 +26,9 @@ public class PlayerService {
         return playerRepository.findAll();
     }
 
-    public Player getPlayerById(Integer id) {
-        Optional<Player> player = playerRepository.findById(id);
-
-        Player thePlayer = null;
-
-        if (player.isPresent()) {
-            thePlayer = player.get();
-        }
-        else {
-            // we didn't find the employee
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
-        return thePlayer;
-        //return playerRepository.findById(id).orElseThrow(() -> new
-        // ResourceNotFoundException("Player not found with id " + id));
+    // @Override
+    public Player findById(Long id) {
+        return playerRepository.findById(id).get();
     }
 
     public Player createPlayer(Player player) {
@@ -48,17 +36,14 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public Player updatePlayer(Integer id, Player playerDetails) {
-        Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
-        player.setName(playerDetails.getName());
-        player.setTeam(playerDetails.getTeam());
+    public Player updatePlayer(Player player) {
         return playerRepository.save(player);
     }
 
 
 
 
-    public void deletePlayer(Integer id) {
+    public void deletePlayer(Long id) {
         Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
         playerRepository.delete(player);
     }

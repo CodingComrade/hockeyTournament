@@ -7,51 +7,54 @@
 </head>
 
 <body>
-    <h3>Player Directory</h3>
-    <hr>
+<h3>Player Directory</h3>
+<hr>
 
-    <a th:href="@{/players/showFormForAdd}"
-            class="btn btn-primary btn-sm mb-3">
-        Add Player
-    </a>
+<a th:href="@{/players/showFormForAdd}"
+   class="btn btn-primary btn-sm mb-3">
+    Add Player
+</a>
 
-    <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Team</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Action</th>
+    </tr>
+    </thead>
 
-        <tbody>
-            <tr th:each="tempPlayer : ${players}">
-                <td th:text="${tempPlayer.name}"></td>
-                <td th:text="${tempPlayer.team}"></td>
-                <td>
+    <tbody>
+    <tr th:each="tempPlayer : ${players}">
+        <td th:text="${tempPlayer.name}"></td>
+        <td th:text="${tempPlayer.team}"></td>
+        <td>
 
-                    <a
-                            th:href="@{/players/showFormForUpdate(playerId=${tempPlayer.id})}"
-                       class="btn btn-info btn-sm">
-                        Update
-                    </a>
+            <form
+                    th:action="@{/players/showFormForUpdate}" method="post">
+                <input type="hidden" th:value="${tempPlayer.id}"
+                       name="tempPlayer.id">
+                <input type="submit" value="Update"
+                       class="btn btn-danger btn-sm">
+            </form>
 
-                    <a
-                            th:href="@{/players/delete(playerId=${tempPlayer.id})}"
-                            class="btn btn-danger btn-sm"
-                            onclick="if (!(confirm('Are you sure you want to delete this player?'))) return false">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/players/home}">Check the home</a>
-    <select>
-        <option value="0">Select Player</option>
-        <option th:each="tempPlayer : ${players}"
-                th:value="${tempPlayer.name}"
-                th:text="${tempPlayer.name}"></option>
-    </select>
+            <form
+                    th:action="@{/players/delete/{id}(id=${tempPlayer.id})}" method="post">
+                <input type="hidden" th:value="${tempPlayer.id}"
+                       name="tempPlayer.id">
+                <input type="submit" value="Delete"
+                       class="btn btn-danger btn-sm">
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/players/home}">Check the home</a>
+<select>
+    <option value="0">Select Player</option>
+    <option th:each="tempPlayer : ${players}"
+            th:value="${tempPlayer.name}"
+            th:text="${tempPlayer.name}"></option>
+</select>
 </body>
 </html>

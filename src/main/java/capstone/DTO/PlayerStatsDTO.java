@@ -1,213 +1,73 @@
 package capstone.DTO;
 
+import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class PlayerStatsDTO {
-    private int Id;
+
+    @Column(name = "id", table = "players")
+    private Long playerId;
+
+    @Column(name = "id", table = "stats")
+    private Long statsId;
+
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "team")
     private String team;
 
+    @Column(name = "games_played")
     private Integer gamesPlayed;
 
+    @Column(name = "goals")
     private Integer goals;
 
+    @Column(name = "assists")
     private Integer assists;
 
+    @Column(name = "points")
     private Integer points;
 
+    @Column(name = "plus_minus")
     private Integer plusMinus;
 
+    @Column(name = "shots")
     private Integer shots;
 
+    @Column(name = "wins")
     private Integer wins;
 
+    @Column(name = "losses")
     private Integer losses;
 
-    private Integer OTL;
+    @Column(name = "overtime_losses")
+    private Integer overtimeLosses;
 
+    @Column(name = "shutouts")
     private Integer shutouts;
 
-    private Double SVPercent;
+    @Column(name = "save_percentage")
+    private Double savePercentage;
 
-    private Double GAA;
+    @Column(name = "goals_against_average")
+    private Double goalsAgainstAverage;
 
+    @Column(name = "saves")
     private Integer saves;
 
+    @Column(name = "shots_against")
     private Integer shotsAgainst;
 
+    @Column(name = "goals_against")
     private Integer goalsAgainst;
 
 
 
-
-    public PlayerStatsDTO(String name, String team, Integer gamesPlayed,
-                          Integer goals, Integer assists, Integer points,
-                          Integer plusMinus, Integer shots, Integer wins,
-                          Integer losses, Integer OTL, Integer shutouts,
-                          Double SVPercent, Double GAA, Integer saves,
-                          Integer shotsAgainst, Integer goalsAgainst) {
-        this.name = name;
-        this.team = team;
-        this.gamesPlayed = gamesPlayed;
-        this.goals = goals;
-        this.assists = assists;
-        this.points = points;
-        this.plusMinus = plusMinus;
-        this.shots = shots;
-        this.wins = wins;
-        this.losses = losses;
-        this.OTL = OTL;
-        this.shutouts = shutouts;
-        this.SVPercent = SVPercent;
-        this.GAA = GAA;
-        this.saves = saves;
-        this.shotsAgainst = shotsAgainst;
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public Integer getGamesPlayed() {
-        return gamesPlayed;
-    }
-
-    public void setGamesPlayed(Integer gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
-
-    public Integer getGoals() {
-        return goals;
-    }
-
-    public void setGoals(Integer goals) {
-        this.goals = goals;
-    }
-
-    public Integer getAssists() {
-        return assists;
-    }
-
-    public void setAssists(Integer assists) {
-        this.assists = assists;
-    }
-
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
-
-    public Integer getPlusMinus() {
-        return plusMinus;
-    }
-
-    public void setPlusMinus(Integer plusMinus) {
-        this.plusMinus = plusMinus;
-    }
-
-    public Integer getShots() {
-        return shots;
-    }
-
-    public void setShots(Integer shots) {
-        this.shots = shots;
-    }
-
-    public Integer getWins() {
-        return wins;
-    }
-
-    public void setWins(Integer wins) {
-        this.wins = wins;
-    }
-
-    public Integer getLosses() {
-        return losses;
-    }
-
-    public void setLosses(Integer losses) {
-        this.losses = losses;
-    }
-
-    public Integer getOTL() {
-        return OTL;
-    }
-
-    public void setOTL(Integer OTL) {
-        this.OTL = OTL;
-    }
-
-    public Integer getShutouts() {
-        return shutouts;
-    }
-
-    public void setShutouts(Integer shutouts) {
-        this.shutouts = shutouts;
-    }
-
-    public Double getSVPercent() {
-        return SVPercent;
-    }
-
-    public void setSVPercent(Double SVPercent) {
-        this.SVPercent = SVPercent;
-    }
-
-    public Double getGAA() {
-        return GAA;
-    }
-
-    public void setGAA(Double GAA) {
-        this.GAA = GAA;
-    }
-
-    public Integer getSaves() {
-        return saves;
-    }
-
-    public void setSaves(Integer saves) {
-        this.saves = saves;
-    }
-
-    public Integer getShotsAgainst() {
-        return shotsAgainst;
-    }
-
-    public void setShotsAgainst(Integer shotsAgainst) {
-        this.shotsAgainst = shotsAgainst;
-    }
-
-    public Integer getGoalsAgainst() {
-        return goalsAgainst;
-    }
-
-    public void setGoalsAgainst(Integer goalsAgainst) {
-        this.goalsAgainst = goalsAgainst;
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
-    }
 }
