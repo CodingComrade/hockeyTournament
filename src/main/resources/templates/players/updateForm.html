@@ -1,0 +1,114 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Player Directory</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h3>Player Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Player</p>
+    <form th:action="@{'/players/' + ${add}}" th:object="${playerStatsDTO}"
+          method="post">
+        <div>test</div>
+
+        <input type="hidden" th:name="playerId"
+               th:value="${player.id}">
+
+        <label for="name">Name:</label>
+        <!--name vs th:field-->
+        <input type="text"  id="name" name="name"
+               th:value="${player.name}"
+               class="form-control mb-4 col-4">
+
+        <label for="team">Team:</label>
+        <input type="text" name="team" id="team"
+               th:value="${player.team}"
+               class="form-control mb-4 col-4">
+
+                <label for="gamesPlayed">Games Played:</label>
+                <input type="number" name="gamesPlayed"
+                       id="gamesPlayed" th:value="${stats.gamesPlayed}"
+                       class="form-control mb-4 col-4">
+
+                <label for="goals">Goals:</label>
+                <input type="number" name="goals" id="goals"
+                       th:value="${stats.goals}"
+                       class="form-control mb-4 col-4">
+
+                <label for="assists">Assists:</label>
+                <input type="number" id="assists"
+                       name="assists" th:value="${stats.assists}"
+                       class="form-control mb-4 col-4">
+
+                <label for="points">Points:</label>
+                <input type="number" name="points" id="points"
+                       th:value="${stats.points}"
+                       class="form-control mb-4 col-4">
+
+                <label for="plusMinus">Plus/Minus:</label>
+                <input type="number" name="plusMinus"
+                       id="plusMinus" th:value="${stats.plusMinus}"
+                       class="form-control mb-4 col-4">
+
+                <label for="shots">Shots:</label>
+                <input type="number" name="shots" id="shots"
+                       th:value="${stats.shots}"
+                       class="form-control mb-4 col-4">
+
+                <label for="wins">Wins:</label>
+                <input type="number" name="wins" id="wins"
+                       th:value="${stats.wins}"
+                       class="form-control mb-4 col-4">
+
+                <label for="losses">Losses:</label>
+                <input type="number"  id="losses" name="losses"
+                       th:value="${stats.losses}"
+                       class="form-control mb-4 col-4">
+
+                <label for="OTL">Overtime Losses:</label>
+                <input type="number" name="overtimeLosses" id="OTL"
+                       th:value="${stats.overtimeLosses}"
+                       class="form-control mb-4 col-4">
+
+                <label for="SavePercent">Save Percent:</label>
+                <input type="number" name="savePercentage"
+                       th:value="${stats.savePercentage}"
+                       id="SavePercent"
+                       class="form-control mb-4 col-4">
+
+                <label for="GAA">GAA:</label>
+                <input type="number" name="goalsAgainstAverage" id="GAA"
+                       step="0.01" th:value="${stats.goalsAgainstAverage}"
+                       class="form-control mb-4 col-4">
+
+                <label for="SO">Shutouts:</label>
+                <input type="number" name="shutouts" id="SO" step="0.01"
+                       th:value="${stats.shutouts}"
+                       class="form-control mb-4 col-4">
+
+                <label for="saves">Saves:</label>
+                <input type="number" name="saves" id="saves"
+                       th:value="${stats.saves}"
+                       class="form-control mb-4 col-4">
+
+                <label for="ShotsAgainst">Shots Against:</label>
+                <input type="number" name="shotsAgainst"
+                       id="ShotsAgainst" th:value="${stats.shotsAgainst}"
+                       class="form-control mb-4 col-4">
+
+                <label for="GoalsAgainst">Goals Against:</label>
+                <input type="number" name="goalsAgainst"
+                       id="GoalsAgainst" th:value="${stats.goalsAgainst}"
+                       class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/players/list}">Back to Players List</a>
+</div>
+</body>
+</html>

@@ -30,13 +30,13 @@
         <td th:text="${tempPlayer.team}"></td>
         <td>
 
-            <form
-                    th:action="@{/players/showFormForUpdate}" method="post">
+            <a
+                    th:href="@{'/players/showFormForUpdate/' + ${tempPlayer.id}}">
                 <input type="hidden" th:value="${tempPlayer.id}"
                        name="tempPlayer.id">
                 <input type="submit" value="Update"
                        class="btn btn-danger btn-sm">
-            </form>
+            </a>
 
             <form
                     th:action="@{/players/delete/{id}(id=${tempPlayer.id})}" method="post">

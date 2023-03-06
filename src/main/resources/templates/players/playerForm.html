@@ -11,22 +11,21 @@
     <hr>
 
     <p class="h4 mb-4">Save Player</p>
-
-    <form th:action="@{/players/save}" th:object="${playerStatsDTO}"
+    <form th:action="@{'/players/' + ${add}}" th:object="${playerStatsDTO}"
           method="post">
-
-        <input type="hidden" th:field="*{playerId}">
+        <div>test</div>
 
         <label for="name">Name:</label>
-        <input type="text" th:field="*{name}" id="name"
+        <!--name vs th:field-->
+        <input type="text"  id="name" name="name"
                class="form-control mb-4 col-4">
 
         <label for="team">Team:</label>
-        <input type="text" th:field="*{team}" id="team"
+        <input type="text" name="team" id="team"
                class="form-control mb-4 col-4">
 
         <label for="gamesPlayed">Games Played:</label>
-        <input type="number" th:field="*{gamesPlayed}"
+        <input type="number" name="gamesPlayed"
                id="gamesPlayed"
                class="form-control mb-4 col-4">
 

@@ -1,6 +1,7 @@
 package capstone.service;
 
 import capstone.dao.StatsRepository;
+import capstone.entity.Player;
 import capstone.entity.Stats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,21 @@ public class StatsService {
         return statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
     }
 
+
+    public Stats findByPlayer(Player player) {
+        return statsRepository.findByPlayer(player);
+    }
+
+
     public Stats createStats(Stats stats) {
         return statsRepository.save(stats);
     }
 
-    public Stats updateStats(Long id, Stats statsDetails) {
-        Stats stats =
-                statsRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found with id " + id));
+    public Stats updateStats(Player player, Stats statsDetails) {
+       Stats stats = statsRepository.findByPlayer(player);
+       // Stats stats =
+                //statsRepository.findById(id).orElseThrow(() -> new
+        // ResourceNotFoundException("Player not found with id " + id));
         stats.setGamesPlayed(statsDetails.getGamesPlayed());
         stats.setGoals(statsDetails.getGoals());
         stats.setAssists(statsDetails.getAssists());

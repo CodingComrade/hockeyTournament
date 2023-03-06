@@ -1,19 +1,14 @@
 package capstone.service;
 
 
-import capstone.DTO.PlayerStatsDTO;
 import capstone.dao.PlayerRepository;
 
 import capstone.entity.Player;
-import capstone.entity.Stats;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @ComponentScan("capstone")
@@ -21,6 +16,10 @@ public class PlayerService {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    public PlayerService(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
     public List<Player> getAllPlayers() {
         return playerRepository.findAll();

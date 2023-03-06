@@ -65,12 +65,24 @@ public class PlayerController {
 
         theModel.addAttribute("thePlayer", thePlayer);
         theModel.addAttribute("stats", stats);
+        theModel.addAttribute("add", "create");
 
 
         return "players/playerForm";
     }
 
-    @PostMapping("/showFormForUpdate")
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showformForUpdate(@PathVariable Long id, Model theModel) {
+        Player player = playerService.findById(id);
+        Stats stats = statsService.findByPlayer(player);
+        theModel.addAttribute("player", player);
+        theModel.addAttribute("add", "update");
+        theModel.addAttribute("stats", stats);
+
+        return "players/updateForm";
+    }
+
+    @PostMapping("/update")
     public String update(@ModelAttribute PlayerStatsDTO dto) {
         Player player = playerService.findById(dto.getPlayerId());
         player.setName(dto.getName());
@@ -96,11 +108,12 @@ public class PlayerController {
 
 
         playerService.updatePlayer(player);
+        statsService.updateStats(player, stats);
 
         //playerService.updatePlayer(player.getId(), player);
 
 
-        return "players/playerForm";
+        return "redirect:/players/list";
     }
 
 
@@ -114,7 +127,7 @@ public class PlayerController {
         return "redirect:/players/list";
     }
 
-    @PostMapping("/save") //changed showFormForAdd to save
+    @PostMapping("/create") //changed showFormForAdd to save
     public String savePlayer(@ModelAttribute("playerStatsDTO") PlayerStatsDTO
                                      playerStatsDTO, Model theModel) {
 
@@ -147,7 +160,6 @@ public class PlayerController {
         statsService.createStats(stats);
         theModel.addAttribute("player", player);
         theModel.addAttribute("stats", stats);
-        //return ResponseEntity.ok().build();
         return "redirect:/players/list";
 
     }
