@@ -36,15 +36,17 @@ public class config {
 
         http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/players/sign-up", "/players/login", "/").permitAll()
+                .requestMatchers("/players/sign-up", "/players/login", "/",
+                        "/static/**").permitAll()
 
                 .requestMatchers( "/bracket",  "/home", "/list-players",
                         "/scores")
-                .hasAnyAuthority("USER", "ADMIN")
-                .requestMatchers("/playerForm", "/updateForm")
-                .hasAuthority("ADMIN")
-                .anyRequest()
-                .authenticated()
+                .hasAnyAuthority("user", "admin")
+                .requestMatchers("/playerForm", "/updateForm",
+                        "/showFormForAdd", "/showFormForUpdate")
+                .hasAuthority("admin")
+//                .anyRequest()
+//                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/players/login")

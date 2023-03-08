@@ -6,6 +6,12 @@ body {
   margin: 0;
 }
 
+.navigation {
+    display: inline;
+    border-right: 2px solid white;
+}
+
+
 .hero {
   position:relative;
   text-align: center;

@@ -2,10 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Player Directory</title>
+    <link rel="stylesheet" th:href="@{/main.css}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 
 <body>
+
+<nav id="nav">
+    <ul class="container">
+        <li><a th:href="@{/players/home}">Home</a></li>
+        <li><a th:href="@{/players/bracket}">Bracket</a></li>
+        <li><a th:href="@{/players/scores}">Scores</a></li>
+        <li><a th:href="@{/players/sign-up}">Sign Up</a></li>
+        <li><a th:href="@{/players/list}">Player List</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+</nav>
 <div class="container">
     <h3>Player Directory</h3>
     <hr>

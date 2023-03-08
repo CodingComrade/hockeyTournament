@@ -1,21 +1,17 @@
 package capstone.controller;
 
-import capstone.DTO.PlayerDTO;
+
 import capstone.DTO.PlayerStatsDTO;
-import capstone.DTO.StatsDTO;
 import capstone.entity.Player;
 import capstone.entity.Stats;
 import capstone.service.PlayerService;
 import capstone.service.StatsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Objects;
+
 
 @Controller
 @RequestMapping("/players")
@@ -70,6 +66,7 @@ public class PlayerController {
         theModel.addAttribute("add", "create");
 
 
+
         return "players/playerForm";
     }
 
@@ -111,8 +108,6 @@ public class PlayerController {
 
         playerService.updatePlayer(player);
         statsService.updateStats(player, stats);
-
-        //playerService.updatePlayer(player.getId(), player);
 
 
         return "redirect:/players/list";

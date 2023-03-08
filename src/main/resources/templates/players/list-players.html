@@ -3,10 +3,21 @@
 <head>
     <title>Player Directory</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+    <link rel="stylesheet" th:href="@{/main.css}" />
 </head>
 
 <body>
+<nav id="nav">
+    <ul class="container">
+        <li><a th:href="@{/players/home}">Home</a></li>
+        <li><a th:href="@{/players/bracket}">Bracket</a></li>
+        <li><a th:href="@{/players/scores}">Scores</a></li>
+        <li><a th:href="@{/players/sign-up}">Sign Up</a></li>
+        <li><a th:href="@{/players/list}">Player List</a></li>
+        <li><a th:href="@{/logout}">Logout</a></li>
+    </ul>
+</nav>
+
 <h3>Player Directory</h3>
 <hr>
 
@@ -49,12 +60,11 @@
     </tr>
     </tbody>
 </table>
-<a th:href="@{/players/home}">Check the home</a>
-<select>
-    <option value="0">Select Player</option>
-    <option th:each="tempPlayer : ${players}"
-            th:value="${tempPlayer.name}"
-            th:text="${tempPlayer.name}"></option>
-</select>
+<!--<select>-->
+<!--    <option value="0">Select Player</option>-->
+<!--    <option th:each="tempPlayer : ${players}"-->
+<!--            th:value="${tempPlayer.name}"-->
+<!--            th:text="${tempPlayer.name}"></option>-->
+<!--</select>-->
 </body>
 </html>

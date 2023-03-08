@@ -34,9 +34,7 @@ public class StatsService {
 
     public Stats updateStats(Player player, Stats statsDetails) {
        Stats stats = statsRepository.findByPlayer(player);
-       // Stats stats =
-                //statsRepository.findById(id).orElseThrow(() -> new
-        // ResourceNotFoundException("Player not found with id " + id));
+
         stats.setGamesPlayed(statsDetails.getGamesPlayed());
         stats.setGoals(statsDetails.getGoals());
         stats.setAssists(statsDetails.getAssists());

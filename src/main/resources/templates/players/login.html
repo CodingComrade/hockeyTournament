@@ -1,28 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www/thymeleaf.org">
 <head>
     <title>Login</title>
+    <meta charset="utf-8" />
 </head>
 <body>
 
-<div class="content">
+<div>
 
-    <h3 class="page-header">Login</h3>
+    <h3>Login</h3>
 
-    <form th:action="@{/players/login}" method="post" class="centered">
+    <form th:action="@{/players/login}" method="post">
         <label path="username">Username: </label>
         <input type="text" name="username" />
 
         <label path="password">Password: </label>
-        <input type="text" name="password" />
+        <input type="password" name="password" />
 
         <input type="submit" value="Login" />
 
     </form>
 
-    <a th:href="@{/players/sign-up}" class="centered">Create New Account</a>
+    <a th:href="@{/players/sign-up}">Create New Account</a>
 
 </div>
+
 
 </body>
 </html>

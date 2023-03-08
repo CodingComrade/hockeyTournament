@@ -20,7 +20,12 @@
         <h1 id="headline">Tournament</h1>
         <p class="year"><i class="fa fa-star"></i> 2022 <i class="fa fa-star"></i></p>
         <p>Super Stanley Cup Playoffs</p>
-        <a th:href="@{/players/home}">Home</a>
+        <li class="navigation"><a th:href="@{/players/home}">Home</a></li>
+        <li class="navigation"><a th:href="@{/players/bracket}">Bracket</a></li>
+        <li class="navigation"><a th:href="@{/players/scores}">Scores</a></li>
+        <li class="navigation"><a th:href="@{/players/sign-up}">Sign Up</a></li>
+        <li class="navigation"><a th:href="@{/players/list}">Player List</a></li>
+        <li class="navigation"><a th:href="@{/logout}">Logout</a></li>
     </div>
 </header>
 
@@ -195,10 +200,7 @@
         </div>
     </div>
 </section>
-<section class="share">
-    <div class="share-wrap">
-    </div>
-</section>
+
 </body>
 
 </html>
