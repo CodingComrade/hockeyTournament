@@ -81,6 +81,7 @@ public class PlayerController {
         return "players/updateForm";
     }
 
+    //I should be able to refactor this method using a mapper
     @PostMapping("/update")
     public String update(@ModelAttribute PlayerStatsDTO dto) {
         Player player = playerService.findById(dto.getPlayerId());
@@ -124,6 +125,7 @@ public class PlayerController {
         return "redirect:/players/list";
     }
 
+    //I should be able to refactor this method using a mapper
     @PostMapping("/create") //changed showFormForAdd to save
     public String savePlayer(@ModelAttribute("playerStatsDTO") PlayerStatsDTO
                                      playerStatsDTO, Model theModel) {

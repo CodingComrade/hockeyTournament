@@ -1,4 +1,4 @@
-package capstone.dao;
+package capstone.repository;
 
 import capstone.entity.Player;
 import capstone.entity.Stats;

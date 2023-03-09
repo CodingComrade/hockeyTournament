@@ -6,6 +6,7 @@ import capstone.entity.Role;
 import capstone.entity.User;
 import capstone.service.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/players")
+@Slf4j
 public class UserController {
 
     @Autowired

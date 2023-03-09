@@ -3,23 +3,61 @@
 <head>
     <title>Login</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 
-<div>
-
     <h3>Login</h3>
 
-    <form th:action="@{/players/login}" method="post">
-        <label path="username">Username: </label>
-        <input type="text" name="username" />
 
-        <label path="password">Password: </label>
-        <input type="password" name="password" />
 
-        <input type="submit" value="Login" />
+    <div>
 
-    </form>
+        <div id="loginbox" style="margin-top: 50px;"
+             class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+
+            <div class="panel panel-info">
+
+                <div class="panel-heading">
+                    <div class="panel-title">Sign In</div>
+                </div>
+
+                <div style="padding-top: 30px" class="panel-body">
+
+                    <!-- Login Form -->
+                    <form th:action="@{/players/login}" method="post" class="form-horizontal">
+
+
+                        <!-- User name -->
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                            <input type="text" name="username" placeholder="username" class="form-control">
+                        </div>
+
+                        <!-- Password -->
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                            <input type="password" name="password" placeholder="password" class="form-control" >
+                        </div>
+
+                        <!-- Login/Submit Button -->
+                        <div style="margin-top: 10px" class="form-group">
+                            <div class="col-sm-6 controls">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
     <a th:href="@{/players/sign-up}">Create New Account</a>
 

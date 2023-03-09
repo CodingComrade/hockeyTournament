@@ -34,10 +34,11 @@ public class config {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.csrf().disable()
+       http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/players/sign-up", "/players/login", "/",
-                        "/static/**").permitAll()
+               .requestMatchers("/players/sign-up", "/players/login").permitAll()//this line of code is
+               // preventing unauthorized users from being able to see
+               // external css stylesheets, and I'm not sure why yet.
 
                 .requestMatchers( "/bracket",  "/home", "/list-players",
                         "/scores")
@@ -45,17 +46,17 @@ public class config {
                 .requestMatchers("/playerForm", "/updateForm",
                         "/showFormForAdd", "/showFormForUpdate")
                 .hasAuthority("admin")
-//                .anyRequest()
-//                .authenticated()
-                .and()
-                .formLogin()
+               .anyRequest()
+                .authenticated()
+               .and()
+               .formLogin()
                 .loginPage("/players/login")
                 .defaultSuccessUrl("/", true)
-                .and()
-                .httpBasic()
-                .and()
+               .and()
+               .httpBasic()
+               .and()
                 .logout()
-                .logoutSuccessUrl("/");
+              .logoutSuccessUrl("/players/login");
 
         return http.build();
     }

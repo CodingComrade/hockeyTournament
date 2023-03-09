@@ -25,4 +25,6 @@ public class Player {
     private String team;
 
 
+    public Player(Long id, String player) {
+    }
 }

@@ -1,9 +1,10 @@
 package capstone.service;
 
 
-import capstone.dao.PlayerRepository;
+
 
 import capstone.entity.Player;
+import capstone.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,9 @@
 package capstone.service;
 
-import capstone.dao.StatsRepository;
+
 import capstone.entity.Player;
 import capstone.entity.Stats;
+import capstone.repository.StatsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
