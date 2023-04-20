@@ -14,4 +14,4 @@ I'd like to add pictures of the player's face (possible copyright issues???) and
 
 I learned that there is almost always a way to futher automate and optimize something and that hard coding is almost never the answer to a problem. I originally received the data from an excel spreadsheet. Rather than enter data into my database manually, I found a way to transfer the data from excel over to MySql which helped me avoid hard coding the data.
 
-Also, I will never again say "Lets do one more thing and then the project is done." Projects are never done. There is always a weird issue to deal with or an imporovement that can be made. Projects, like the void, are endless. There is no escape. 
+Also, I will never again say "Lets do one more thing and then the project is done." Projects are never done. There is always a weird issue to deal with or an improvement that can be made. Projects, like the void, are endless. There is no escape. 
