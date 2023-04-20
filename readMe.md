@@ -1,4 +1,4 @@
-# Hockey Statistics Webpage
+# Hockey Tournament Webpage
 
 ## How It's Made:
 
